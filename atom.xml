@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.w4ter5heep.com/"/>
-  <updated>2018-04-06T01:55:01.296Z</updated>
+  <updated>2018-04-06T02:43:46.950Z</updated>
   <id>http://www.w4ter5heep.com/</id>
   
   <author>
@@ -21,16 +21,17 @@
     <link href="http://www.w4ter5heep.com/2018/04/05/hellow-my-site/"/>
     <id>http://www.w4ter5heep.com/2018/04/05/hellow-my-site/</id>
     <published>2018-04-05T09:19:55.000Z</published>
-    <updated>2018-04-06T01:55:01.296Z</updated>
+    <updated>2018-04-06T02:43:46.950Z</updated>
     
-    <content type="html"><![CDATA[<p>can you see my secret</p>]]></content>
+    <content type="html"><![CDATA[<p>can you see my secret<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="./gogo.jpg" alt="picturetest" title="">                </div>                <div class="image-caption">picturetest</div>            </figure></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;can you see my secret&lt;/p&gt;
-
+        &lt;p&gt;can you see my secret&lt;br&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay
       
     
     </summary>
