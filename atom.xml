@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.w4ter5heep.com/"/>
-  <updated>2018-04-06T02:48:56.178Z</updated>
+  <updated>2018-04-06T02:59:22.656Z</updated>
   <id>http://www.w4ter5heep.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>hellow_my_site</title>
-    <link href="http://www.w4ter5heep.com/2018/04/05/hellow-my-site/"/>
-    <id>http://www.w4ter5heep.com/2018/04/05/hellow-my-site/</id>
-    <published>2018-04-05T09:19:55.000Z</published>
-    <updated>2018-04-06T02:48:56.178Z</updated>
+    <title>picturetest</title>
+    <link href="http://www.w4ter5heep.com/2018/04/06/picturetest/"/>
+    <id>http://www.w4ter5heep.com/2018/04/06/picturetest/</id>
+    <published>2018-04-06T02:58:00.000Z</published>
+    <updated>2018-04-06T02:59:22.656Z</updated>
     
     <content type="html"><![CDATA[<p>can you see my secret<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="./picutretest/gogo.jpg" alt="picturetest" title="">                </div>                <div class="image-caption">picturetest</div>            </figure></p>]]></content>
     
@@ -32,6 +32,30 @@
         &lt;p&gt;can you see my secret&lt;br&gt;&lt;figure class=&quot;image-bubble&quot;&gt;
                 &lt;div class=&quot;img-lightbox&quot;&gt;
                     &lt;div class=&quot;overlay
+      
+    
+    </summary>
+    
+    
+      <category term="picturetest" scheme="http://www.w4ter5heep.com/tags/picturetest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hellow_my_site</title>
+    <link href="http://www.w4ter5heep.com/2018/04/05/hellow-my-site/"/>
+    <id>http://www.w4ter5heep.com/2018/04/05/hellow-my-site/</id>
+    <published>2018-04-05T09:19:55.000Z</published>
+    <updated>2018-04-06T02:58:28.878Z</updated>
+    
+    <content type="html"><![CDATA[<p>can you see my secret</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;can you see my secret&lt;/p&gt;
+
       
     
     </summary>
