@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>StarCTF-BabyDroid | W4ter5heep&#39;s site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CTF,Mobile">
+    <meta name="description" content="逆向题目中唯一一道android逆向，做出来的过程也比较费力，这里简单记录。 安装程序发现会闪退，可能有反调试措施，首先进行静态分析。JEB查看Java代码部分：                                                                                             Alt text             关键方法是">
+<meta name="keywords" content="CTF,Mobile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StarCTF-BabyDroid">
+<meta property="og:url" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/index.html">
+<meta property="og:site_name" content="W4ter5heep&#39;s site">
+<meta property="og:description" content="逆向题目中唯一一道android逆向，做出来的过程也比较费力，这里简单记录。 安装程序发现会闪退，可能有反调试措施，首先进行静态分析。JEB查看Java代码部分：                                                                                             Alt text             关键方法是">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189773745.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189793178.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189811484.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189835087.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189839990.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189852059.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189971044.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525190067624.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525190079202.png">
+<meta property="og:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525190090121.png">
+<meta property="og:updated_time" content="2018-05-01T16:30:24.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="StarCTF-BabyDroid">
+<meta name="twitter:description" content="逆向题目中唯一一道android逆向，做出来的过程也比较费力，这里简单记录。 安装程序发现会闪退，可能有反调试措施，首先进行静态分析。JEB查看Java代码部分：                                                                                             Alt text             关键方法是">
+<meta name="twitter:image" content="http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/1525189773745.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="W4ter5heep&#39;s site" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gogo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">W4ter5heep</h5>
+          <a href="mailto:w4ter5heep@qq.com" title="w4ter5heep@qq.com" class="mail">w4ter5heep@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/w4ter5heep" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friendlinks"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                友链
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">StarCTF-BabyDroid</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">StarCTF-BabyDroid</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-01T16:04:08.000Z" itemprop="datePublished" class="page-time">
+  2018-05-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/WriteUp/">WriteUp</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-StarCTF-BabyDroid"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">StarCTF-BabyDroid</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-02 00:04:08" datetime="2018-05-01T16:04:08.000Z"  itemprop="datePublished">2018-05-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/WriteUp/">WriteUp</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>逆向题目中唯一一道android逆向，做出来的过程也比较费力，这里简单记录。</p>
+<p>安装程序发现会闪退，可能有反调试措施，首先进行静态分析。<br>JEB查看Java代码部分：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525189773745.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br>关键方法是check0，同时注意到上面有许多check函数的native声明：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525189793178.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br>从so文件中查找相关方法。首先在liba.so中找到了check0函数：<br>发现进一步调用的是check函数，但是在liba中没有相关信息，查找libb，没有直接找到check函数，考虑JNIOnLoad进行了注册，但是也没有找到JNIOnLoad函数，查找发现了sub_ED8函数：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525189811484.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br>对一部分数据进行了解密，同时发现了：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525189835087.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525189839990.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br>所以JNIOnLoad函数会在运行时才解密：<br>解密的关键是这个值：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525189852059.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br>进入sub_9B4发现计算的应该是一个校验和，<br>分析程序逻辑，写出计算校验和的脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def crc32(ss):</span><br><span class="line">    v2 = i32(-1)</span><br><span class="line">    v7 = i32()</span><br><span class="line">    for s in ss:</span><br><span class="line">        if isinstance(s, bytes):</span><br><span class="line">            s = s[0]</span><br><span class="line">        for i in range(8):</span><br><span class="line">            v7.value = v2.value ^ (s &gt;&gt; i &lt;&lt; 31)</span><br><span class="line">            v2.value *= 2</span><br><span class="line">            if v7.value &lt;= -1:</span><br><span class="line">                # if not 0x4C11DB7 &amp; 1:</span><br><span class="line">                #     v2.value ^= 1</span><br><span class="line">                v2.value ^= 0x4C11DB7</span><br><span class="line">    return u32(-v2.value).value - 1</span><br></pre></td></tr></table></figure></p>
+<p>得到libb的校验和：0x6674632a<br>解密libb.so可以得到JNIOnLoad：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525189971044.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br>这里也进行了注册，将相关字符串进行解密可以发现就是对check函数的注册，解密脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def xorstr():</span><br><span class="line">    def get_result(nums, key):</span><br><span class="line">        nums = [[((i &gt;&gt; (j * 8)) &amp; 0xff) for j in range(4)] for i in nums]</span><br><span class="line">        # nums = sum(nums, [])</span><br><span class="line">        nums = list(itertools.chain.from_iterable(nums))</span><br><span class="line">        nums = [i ^ key for i in itertools.takewhile(lambda i: i != 0, nums)]</span><br><span class="line"></span><br><span class="line">        b = bytes(nums)</span><br><span class="line">        return b</span><br><span class="line"></span><br><span class="line">    nums = [0xBCFEFCF0,</span><br><span class="line">            0xEAE9A1E2,</span><br><span class="line">            0xF1F2F1BC,</span><br><span class="line">            0xF7FDF2EA,</span><br><span class="line">            0xF7FAFCE1,</span><br><span class="line">            0xFAF2DEBC,</span><br><span class="line">            0xE7F0D2FD,</span><br><span class="line">            0xE7FAE5FA,</span><br><span class="line">            0xea]</span><br><span class="line"></span><br><span class="line">    print(get_result(nums, 0x93))</span><br><span class="line"></span><br><span class="line">    nums = [0x777C5A3E,</span><br><span class="line">            0x7A397760,</span><br><span class="line">            0x39717877,</span><br><span class="line">            0x7F646245,</span><br><span class="line">            0x3F2D7178,</span><br><span class="line">            0x4C]</span><br><span class="line">    print(get_result(nums, 0x16))</span><br><span class="line"></span><br><span class="line">    nums = [0x73757873, 0x7B]</span><br><span class="line">    print((get_result(nums, 0x10)))</span><br></pre></td></tr></table></figure></p>
+<p>解密结果为：<br>com/q2zy/babyandroid/MainActivity<br> (Ljava/lang/String;)Z<br> check</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525190067624.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure>
+<p>即是注册的函数，但是发现依然是乱码，注意到下面还有一段解密：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525190079202.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure></p>
+<p>这里用到了liba.so的校验和，计算发现也是0x6674632a<br>解密得到check 函数：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./1525190090121.png" alt="Alt text" title="">
+                </div>
+                <div class="image-caption">Alt text</div>
+            </figure><br>再次用到了liba.so的校验和，分析逻辑写出解密脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def get_flag():</span><br><span class="line">    crc = crc32(open(&apos;/Users/alset/Downloads/apk/lib/armeabi-v7a/liba.so&apos;, &apos;rb&apos;).read())</span><br><span class="line">    crc2 = crc * crc</span><br><span class="line">    checksums = [((crc2 &gt;&gt; (j * 8)) &amp; 0xff) for j in range(8)]</span><br><span class="line">    b = bytearray([</span><br><span class="line">        0xD5,</span><br><span class="line">        8,</span><br><span class="line">        0x4B,</span><br><span class="line">        0x11,</span><br><span class="line">        0xBF,</span><br><span class="line">        0xC,</span><br><span class="line">        0xB,</span><br><span class="line">        0x1F,</span><br><span class="line">        0xDC,</span><br><span class="line">        0x57,</span><br><span class="line">        0x64,</span><br><span class="line">        0x74,</span><br><span class="line">        0xB4,</span><br><span class="line">        0x6D,</span><br><span class="line">        0x5B,</span><br><span class="line">        0xD4,</span><br><span class="line">        0xEB,</span><br><span class="line">        0x1D,</span><br><span class="line">        0x51,</span><br><span class="line">        0xAE,</span><br><span class="line">        0xD5,</span><br><span class="line">        0x44,</span><br><span class="line">        8,</span><br><span class="line">        # 0</span><br><span class="line">    ])</span><br><span class="line">    for i in range(8):</span><br><span class="line">        for j in range(8):</span><br><span class="line">            b[i + j] ^= checksums[j]</span><br><span class="line">    i = 15</span><br><span class="line">    for j in range(8):</span><br><span class="line">        b[i + j] ^= checksums[j]</span><br><span class="line"></span><br><span class="line">    print(b)</span><br></pre></td></tr></table></figure></p>
+<p>得到flag：1nTr3stIng-AnDr0id-A&amp;D!<br>完整解密脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import mmap</span><br><span class="line">import itertools</span><br><span class="line">from ctypes import c_int32 as i32, c_uint32 as u32</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def memory_map(filename, access=mmap.ACCESS_COPY):</span><br><span class="line">    size = os.path.getsize(filename)</span><br><span class="line">    fd = os.open(filename, os.O_RDWR)</span><br><span class="line">    return mmap.mmap(fd, size, access=access)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def crc32(ss):</span><br><span class="line">    v2 = i32(-1)</span><br><span class="line">    v7 = i32()</span><br><span class="line">    for s in ss:</span><br><span class="line">        if isinstance(s, bytes):</span><br><span class="line">            s = s[0]</span><br><span class="line">        for i in range(8):</span><br><span class="line">            v7.value = v2.value ^ (s &gt;&gt; i &lt;&lt; 31)</span><br><span class="line">            v2.value *= 2</span><br><span class="line">            if v7.value &lt;= -1:</span><br><span class="line">                # if not 0x4C11DB7 &amp; 1:</span><br><span class="line">                #     v2.value ^= 1</span><br><span class="line">                v2.value ^= 0x4C11DB7</span><br><span class="line">    return u32(-v2.value).value - 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def recoverlibb():</span><br><span class="line">    m = memory_map(&apos;./apk/lib/armeabi-v7a/libb.so&apos;)</span><br><span class="line"></span><br><span class="line">    start = 0xab8</span><br><span class="line">    size = 0x420</span><br><span class="line">    # right_asm = [0xf0, 0xb5, 0x3, 0xaf]</span><br><span class="line">    # checksums = [m[start + i] ^ right_asm[i] for i in range(len(right_asm))]</span><br><span class="line">    checksum = crc32(m)</span><br><span class="line">    checksums = [((checksum &gt;&gt; (j * 8)) &amp; 0xff) for j in range(4)]</span><br><span class="line">    ichecksums = itertools.cycle(checksums)</span><br><span class="line">    for i in range(size):</span><br><span class="line">        m[start + i] = m[start + i] ^ next(ichecksums)</span><br><span class="line"></span><br><span class="line">    start += 0x27C</span><br><span class="line">    size -= 0x27C</span><br><span class="line">    for i in range(0, , 4):</span><br><span class="line">        m[start + i], m[start + i + 1], m[start + i + 2], m[start + i + 3] = m[start + i + 2], m[start + i + 3], m[</span><br><span class="line">            start + i], m[start + i + 1]</span><br><span class="line">    # right_asm = [0xFF, 0xF7, 0x3E, 0xEE]</span><br><span class="line">    # checksums = [m[start + size - 4 + i] ^ right_asm[i] for i in range(len(right_asm))]</span><br><span class="line">    checksum = crc32(open(&apos;./apk/lib/armeabi-v7a/liba.so&apos;, &apos;rb&apos;).read())</span><br><span class="line">    print(&apos;a: &apos;, checksum)</span><br><span class="line">    checksums = [((checksum &gt;&gt; (j * 8)) &amp; 0xff) for j in range(4)]</span><br><span class="line">    ichecksums = itertools.cycle(checksums)</span><br><span class="line">    for i in range(size):</span><br><span class="line">        m[start + i] = m[start + i] ^ next(ichecksums)</span><br><span class="line"></span><br><span class="line">    m.seek(0)</span><br><span class="line">    open(&apos;./apk/lib/armeabi-v7a/libbnew2.so&apos;, &apos;wb&apos;).write(m.read())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def xorstr():</span><br><span class="line">    def get_result(nums, key):</span><br><span class="line">        nums = [[((i &gt;&gt; (j * 8)) &amp; 0xff) for j in range(4)] for i in nums]</span><br><span class="line">        # nums = sum(nums, [])</span><br><span class="line">        nums = list(itertools.chain.from_iterable(nums))</span><br><span class="line">        nums = [i ^ key for i in itertools.takewhile(lambda i: i != 0, nums)]</span><br><span class="line"></span><br><span class="line">        b = bytes(nums)</span><br><span class="line">        return b</span><br><span class="line"></span><br><span class="line">    nums = [0xBCFEFCF0,</span><br><span class="line">            0xEAE9A1E2,</span><br><span class="line">            0xF1F2F1BC,</span><br><span class="line">            0xF7FDF2EA,</span><br><span class="line">            0xF7FAFCE1,</span><br><span class="line">            0xFAF2DEBC,</span><br><span class="line">            0xE7F0D2FD,</span><br><span class="line">            0xE7FAE5FA,</span><br><span class="line">            0xea]</span><br><span class="line"></span><br><span class="line">    print(get_result(nums, 0x93))</span><br><span class="line"></span><br><span class="line">    nums = [0x777C5A3E,</span><br><span class="line">            0x7A397760,</span><br><span class="line">            0x39717877,</span><br><span class="line">            0x7F646245,</span><br><span class="line">            0x3F2D7178,</span><br><span class="line">            0x4C]</span><br><span class="line">    print(get_result(nums, 0x16))</span><br><span class="line"></span><br><span class="line">    nums = [0x73757873, 0x7B]</span><br><span class="line">    print((get_result(nums, 0x10)))</span><br><span class="line"></span><br><span class="line">def get_flag():</span><br><span class="line">    crc = crc32(open(&apos;./apk/lib/armeabi-v7a/liba.so&apos;, &apos;rb&apos;).read())</span><br><span class="line">    crc2 = crc * crc</span><br><span class="line">    checksums = [((crc2 &gt;&gt; (j * 8)) &amp; 0xff) for j in range(8)]</span><br><span class="line">    b = bytearray([</span><br><span class="line">        0xD5,</span><br><span class="line">        8,</span><br><span class="line">        0x4B,</span><br><span class="line">        0x11,</span><br><span class="line">        0xBF,</span><br><span class="line">        0xC,</span><br><span class="line">        0xB,</span><br><span class="line">        0x1F,</span><br><span class="line">        0xDC,</span><br><span class="line">        0x57,</span><br><span class="line">        0x64,</span><br><span class="line">        0x74,</span><br><span class="line">        0xB4,</span><br><span class="line">        0x6D,</span><br><span class="line">        0x5B,</span><br><span class="line">        0xD4,</span><br><span class="line">        0xEB,</span><br><span class="line">        0x1D,</span><br><span class="line">        0x51,</span><br><span class="line">        0xAE,</span><br><span class="line">        0xD5,</span><br><span class="line">        0x44,</span><br><span class="line">        8,</span><br><span class="line">        # 0</span><br><span class="line">    ])</span><br><span class="line">    for i in range(8):</span><br><span class="line">        for j in range(8):</span><br><span class="line">            b[i + j] ^= checksums[j]</span><br><span class="line">    i = 15</span><br><span class="line">    for j in range(8):</span><br><span class="line">        b[i + j] ^= checksums[j]</span><br><span class="line"></span><br><span class="line">    print(b)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # xorstr()</span><br><span class="line">    # recoverlibb()</span><br><span class="line">    get_flag()</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-01T16:30:24.660Z" itemprop="dateUpdated">2018-05-02 00:30:24</time>
+</span><br>
+
+
+        
+        感谢阅读
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.w4ter5heep.com">
+            <img src="/img/gogo.jpg" alt="W4ter5heep">
+            W4ter5heep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile/">Mobile</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/&title=《StarCTF-BabyDroid》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/&title=《StarCTF-BabyDroid》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《StarCTF-BabyDroid》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/15/HITB2018线上赛——Mobile/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">HITB2018线上赛——Mobile</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>W4ter5heep &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/&title=《StarCTF-BabyDroid》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/&title=《StarCTF-BabyDroid》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《StarCTF-BabyDroid》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/05/02/StarCTF-BabyDroid/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQW7DMAwF0dz/0u62QCt3PikXMDVaBYkj+3lBUCQ/H7yub4v8ml5P/rVhyZAh47WM63atrrnf4eevBHB//f1dZMiQcQJjFcHI1qt9+EPwPZffy5AhQwYOmime3EuGDBkydgXczvGY3FeGDBkyyCGWHE3JMbjzyjacxWXIkPFCRhoW//PzI/0NGTJkvIpxhYukdLxklobX5VPJkCFjNIMHOFJK403K/sFYhgwZZzLSAMr/xQMuelxSbpMhQ8ZQBk/7yPeElJbn/gjrMmTIOIyRxjGS8HUaDOjZZMiQMZTB24qdwYhaSS4YIJMhQ8ZoRme4gdyYB81agljsMMiQIeO1jPRm/L+18lkx4MqQIWM0ox9wn0gEg1AuQ4aMoYx0hCJtQD6RAqIxCxkyZIxjkCDIA3EtZWy9LBkyZBzDSDdNO6V8XIMklL+khjJkyDiAkQ5s8TLcXrYMGTJOY6SNgXQggx+SOy9IhgwZpzHSxkDtsMr34a0FGTJknMnoNyN5slhrFaCAK0OGjEEMPuLAEzseUmuti7g6KEOGjHGMWpOAh+xacrmEyZAhYyjjClc/vKYtARRwZciQMZrRKYqlt9n1gjpjZzJkyHgvI33E9DMfAmsFXBkyZBzA6JS6CDst+sdVNRkyZMgA2WXcdAxf3OaAK0OGjAMYJOx2CnDxAViGDBkHMDYPabVLbPE1MmTIGM3oHB1rR9P7h6iNqcmQIWMo4wvYxdsZaRokEAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你看不到我了哦！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哇，你回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
