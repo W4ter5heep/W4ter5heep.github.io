@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | W4ter5heep&#39;s site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
+<meta name="keywords" content="Show me your shell $">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/index.html">
+<meta property="og:site_name" content="W4ter5heep&#39;s site">
+<meta property="og:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.w4ter5heep.com/_posts/images/15305829173532.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/_posts/images/15305829276608.jpg">
+<meta property="og:updated_time" content="2018-07-03T01:55:52.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
+<meta name="twitter:image" content="http://www.w4ter5heep.com/_posts/images/15305829173532.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="W4ter5heep&#39;s site" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gogo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">W4ter5heep</h5>
+          <a href="mailto:w4ter5heep@qq.com" title="w4ter5heep@qq.com" class="mail">w4ter5heep@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/w4ter5heep" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friendlinks"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                友链
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-03T01:53:04.697Z" itemprop="datePublished" class="page-time">
+  2018-07-03
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#看雪CTF——ExecuteTable"><span class="post-toc-number">1.</span> <span class="post-toc-text">看雪CTF——ExecuteTable</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#初步分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">初步分析</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-看雪CTF第五题——ExecuteTable"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-03 09:53:04" datetime="2018-07-03T01:53:04.697Z"  itemprop="datePublished">2018-07-03</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="看雪CTF——ExecuteTable"><a href="#看雪CTF——ExecuteTable" class="headerlink" title="看雪CTF——ExecuteTable"></a>看雪CTF——ExecuteTable</h1><p>题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里</p>
+<h1 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h1><p>首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/_posts/images/15305829173532.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/_posts/images/15305829276608.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-03T01:55:52.973Z" itemprop="dateUpdated">2018-07-03 09:55:52</time>
+</span><br>
+
+
+        
+        感谢阅读
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.w4ter5heep.com">
+            <img src="/img/gogo.jpg" alt="W4ter5heep">
+            W4ter5heep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《No title》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《No title》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/04/SUCTF复盘——三个RE/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SUCTF复盘——三个RE</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>W4ter5heep &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《No title》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《No title》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aQXLjQAgF0Nz/0p6qWSU1kfWBRuPF08ol23K/XjQY+PqKr9ff6+r+93eTO/8+8/1nrt49duHh4eG1ln51vV/K1Wfeb1Dy/HwTb7YADw8Pb42XLCg5svM7+WblW4mHh4f3abxJclxeVisI4eHh4X0aL0mdq6WEV3Dla8DDw8N7kpc8Or8zeeb7py3WWvDw8PBiXrUB9gmvF/t7eHh4eIOu+iTN7Y0C9ELF5Qrx8PDwFnhJ4TU/eyfNrerrQsDAw8PDW+DlwwHzNv/ZEYFRrRoPDw+vxesd2b1G18ZZfZPE4+Hh4S3wkqP2bGs/ScerCXoz98fDw8Nr8fLl9u4kLf/qRuefwcPDw9vgVUed9gLJJJzcfBcPDw9vjZf/sa8uIj/iq+WPUY8ODw8Pr8XrtZryku4EcKBAjIeHh7fbeyoUESbpeJJSJ2l61PTCw8PDe5CXJ6/V8anqQvMtuHkXDw8Pb42XfC1PxHsBoFpPiIIEHh4e3iHeqQS3OsxaLTE0S8x4eHh4j/Am4SF/Qv46LyX/8ut4eHh4C7zqSMFGjTQvSfRKw3h4eHhP8noL7RVw8zCQF47x8PDwNngbrfqkOJsXKapp+o87eHh4eAu8+Z//XnioJspJSfdytXh4eHjLvNfg6hUOesMBhd/Fw8PDW+DNm1jzAmseHqpNOzw8PLwNXl5cyEu0k4R7kpTfxD08PDy8o7xq6eFsEjwZXLhZFR4eHt5R3rz5VN2OCbsaMPDw8PA2eL1IkhcpTg1yJc/Hw8PDe5KXFwIm1Pygr44aRKMDeHh4eAu86kGflFOrownNqJVPRuDh4eH9V171x+blhjxsRJk7Hh4e3iO8vNRbHSlItqaaguPh4eFt86rLzYutvfDQC0KFGIWHh4c34PUaYNU7+TZVt+wAEg8PDy/l/QEnMkEFZyWoCAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你看不到我了哦！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哇，你回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
