@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.w4ter5heep.com/"/>
-  <updated>2018-07-03T01:55:52.973Z</updated>
+  <updated>2018-07-03T02:02:45.930Z</updated>
   <id>http://www.w4ter5heep.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://www.w4ter5heep.com/2018/07/03/%E7%9C%8B%E9%9B%AACTF%E7%AC%AC%E4%BA%94%E9%A2%98%E2%80%94%E2%80%94ExecuteTable/"/>
     <id>http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/</id>
     <published>2018-07-03T01:53:04.697Z</published>
-    <updated>2018-07-03T01:55:52.973Z</updated>
+    <updated>2018-07-03T02:02:45.930Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="看雪CTF——ExecuteTable"><a href="#看雪CTF——ExecuteTable" class="headerlink" title="看雪CTF——ExecuteTable"></a>看雪CTF——ExecuteTable</h1><p>题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里</p><h1 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h1><p>首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/_posts/images/15305829173532.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/_posts/images/15305829276608.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="看雪CTF——ExecuteTable"><a href="#看雪CTF——ExecuteTable" class="headerlink" title="看雪CTF——ExecuteTable"></a>看雪CTF——ExecuteTable</h1><p>题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里</p><h1 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h1><p>首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="images/15305833453331.jpg" alt="-w596" title="">                </div>                <div class="image-caption">-w596</div>            </figure><br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="images/15305833513057.jpg" alt="-w626" title="">                </div>                <div class="image-caption">-w626</div>            </figure></p>]]></content>
     
     <summary type="html">
     
