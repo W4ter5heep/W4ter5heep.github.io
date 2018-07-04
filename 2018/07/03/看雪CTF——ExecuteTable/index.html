@@ -21,15 +21,14 @@
     
     
     <meta name="keywords" content="CTF,Android">
-    <meta name="description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
+    <meta name="description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的： 主要需要进行两个函数的检测">
 <meta name="keywords" content="CTF,Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="看雪CTF——ExecuteTable">
 <meta property="og:url" content="http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/index.html">
 <meta property="og:site_name" content="W4ter5heep&#39;s site">
-<meta property="og:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
+<meta property="og:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的： 主要需要进行两个函数的检测">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://www.w4ter5heep.com/images/15306642506152.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15305835793027.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15305835848924.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15305899110624.jpg">
@@ -48,11 +47,11 @@
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15306581017587.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15306582383232.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15306588811845.jpg">
-<meta property="og:updated_time" content="2018-07-04T02:04:05.109Z">
+<meta property="og:updated_time" content="2018-07-04T02:32:29.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="看雪CTF——ExecuteTable">
-<meta name="twitter:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
-<meta name="twitter:image" content="http://www.w4ter5heep.com/images/15306642506152.jpg">
+<meta name="twitter:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的： 主要需要进行两个函数的检测">
+<meta name="twitter:image" content="http://www.w4ter5heep.com/images/15305835793027.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="W4ter5heep&#39;s site" href="/atom.xml">
     
@@ -214,13 +213,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="看雪CTF——ExecuteTable"><a href="#看雪CTF——ExecuteTable" class="headerlink" title="看雪CTF——ExecuteTable"></a>看雪CTF——ExecuteTable</h1><p>题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里</p>
-<h2 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h2><p>首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/15306642506152.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<h2 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h2><p>首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：</p>
 <p>主要需要进行两个函数的检测<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -406,6 +399,8 @@
 </ol>
 <p><strong>以前不知道的</strong>：init_proc函数和init_array函数比较重要，是so初始化以后最小调用的函数，在init_array函数中可以看到注册了很多关键函数。包括查看/proc/self/status的，修改内存的，注册反调试线程的等等。</p>
 <p>说到底，对elf文件格式不懂，对so的初始化和调用也不熟悉。应该补补课了。</p>
+<p>参考了各位做出来的大佬的WP，深感小白的无力</p>
+<p><a href="https://ctf.pediy.com/game-fight-59.htm" target="_blank" rel="noopener">https://ctf.pediy.com/game-fight-59.htm</a></p>
 
         </div>
 
@@ -414,7 +409,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-07-04T02:04:05.109Z" itemprop="dateUpdated">2018-07-04 10:04:05</time>
+    最后更新时间：<time datetime="2018-07-04T02:32:29.214Z" itemprop="dateUpdated">2018-07-04 10:32:29</time>
 </span><br>
 
 
