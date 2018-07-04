@@ -21,14 +21,15 @@
     
     
     <meta name="keywords" content="CTF,Android">
-    <meta name="description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：主要需要进行两个函数的检测">
+    <meta name="description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
 <meta name="keywords" content="CTF,Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="看雪CTF——ExecuteTable">
-<meta property="og:url" content="http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/index.html">
+<meta property="og:url" content="http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/index.html">
 <meta property="og:site_name" content="W4ter5heep&#39;s site">
-<meta property="og:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：主要需要进行两个函数的检测">
+<meta property="og:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306642506152.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15305835793027.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15305835848924.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15305899110624.jpg">
@@ -47,11 +48,11 @@
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15306581017587.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15306582383232.jpg">
 <meta property="og:image" content="http://www.w4ter5heep.com/images/15306588811845.jpg">
-<meta property="og:updated_time" content="2018-07-03T23:21:44.455Z">
+<meta property="og:updated_time" content="2018-07-04T00:31:20.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="看雪CTF——ExecuteTable">
-<meta name="twitter:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：主要需要进行两个函数的检测">
-<meta name="twitter:image" content="http://www.w4ter5heep.com/images/15305835793027.jpg">
+<meta name="twitter:description" content="看雪CTF——ExecuteTable题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里 初步分析首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：">
+<meta name="twitter:image" content="http://www.w4ter5heep.com/images/15306642506152.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="W4ter5heep&#39;s site" href="/atom.xml">
     
@@ -191,7 +192,7 @@
     </aside>
 
 
-<article id="post-看雪CTF第五题——ExecuteTable"
+<article id="post-看雪CTF——ExecuteTable"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -213,7 +214,14 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="看雪CTF——ExecuteTable"><a href="#看雪CTF——ExecuteTable" class="headerlink" title="看雪CTF——ExecuteTable"></a>看雪CTF——ExecuteTable</h1><p>题目确实比较有难度，自己水平还是太差了，到了so文件的分析，根本不知道关键点在哪里</p>
-<h2 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h2><p>首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：<br>主要需要进行两个函数的检测<br><figure class="image-bubble">
+<h2 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h2><p>首先JEB分析java部分，可以看到有一些混淆，包括对字符串的base64加密等等，但是基本逻辑是可以看到的：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306642506152.jpg" alt="-w315" title="">
+                </div>
+                <div class="image-caption">-w315</div>
+            </figure></p>
+<p>主要需要进行两个函数的检测<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="/images/15305835793027.jpg" alt="" title="">
@@ -396,7 +404,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-07-03T23:21:44.455Z" itemprop="dateUpdated">2018-07-04 07:21:44</time>
+    最后更新时间：<time datetime="2018-07-04T00:31:20.189Z" itemprop="dateUpdated">2018-07-04 08:31:20</time>
 </span><br>
 
 
@@ -432,7 +440,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -442,22 +450,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《看雪CTF——ExecuteTable》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《看雪CTF——ExecuteTable》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/&via=http://www.w4ter5heep.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -581,7 +589,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -591,22 +599,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/&title=《看雪CTF——ExecuteTable》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《看雪CTF——ExecuteTable》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《看雪CTF——ExecuteTable》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/&via=http://www.w4ter5heep.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF第五题——ExecuteTable/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/03/看雪CTF——ExecuteTable/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -617,7 +625,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aQXLjQAgF0Nz/0p6qWSU1kfWBRuPF08ol23K/XjQY+PqKr9ff6+r+93eTO/8+8/1nrt49duHh4eG1ln51vV/K1Wfeb1Dy/HwTb7YADw8Pb42XLCg5svM7+WblW4mHh4f3abxJclxeVisI4eHh4X0aL0mdq6WEV3Dla8DDw8N7kpc8Or8zeeb7py3WWvDw8PBiXrUB9gmvF/t7eHh4eIOu+iTN7Y0C9ELF5Qrx8PDwFnhJ4TU/eyfNrerrQsDAw8PDW+DlwwHzNv/ZEYFRrRoPDw+vxesd2b1G18ZZfZPE4+Hh4S3wkqP2bGs/ScerCXoz98fDw8Nr8fLl9u4kLf/qRuefwcPDw9vgVUed9gLJJJzcfBcPDw9vjZf/sa8uIj/iq+WPUY8ODw8Pr8XrtZryku4EcKBAjIeHh7fbeyoUESbpeJJSJ2l61PTCw8PDe5CXJ6/V8anqQvMtuHkXDw8Pb42XfC1PxHsBoFpPiIIEHh4e3iHeqQS3OsxaLTE0S8x4eHh4j/Am4SF/Qv46LyX/8ut4eHh4C7zqSMFGjTQvSfRKw3h4eHhP8noL7RVw8zCQF47x8PDwNngbrfqkOJsXKapp+o87eHh4eAu8+Z//XnioJspJSfdytXh4eHjLvNfg6hUOesMBhd/Fw8PDW+DNm1jzAmseHqpNOzw8PLwNXl5cyEu0k4R7kpTfxD08PDy8o7xq6eFsEjwZXLhZFR4eHt5R3rz5VN2OCbsaMPDw8PA2eL1IkhcpTg1yJc/Hw8PDe5KXFwIm1Pygr44aRKMDeHh4eAu86kGflFOrownNqJVPRuDh4eH9V171x+blhjxsRJk7Hh4e3iO8vNRbHSlItqaaguPh4eFt86rLzYutvfDQC0KFGIWHh4c34PUaYNU7+TZVt+wAEg8PDy/l/QEnMkEFZyWoCAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQW7DUAgE0N7/0qnUvd0Z8E+q6nkVRYnN8+KDgK+v+Hr9XFffvC6u2d3yfz124eHh4Y1Cvw/x/psrUnKHq7u131++Vjw8PLxjvPuD+B6QBJQc9+3LjZIHHh4e3kd5eYGbJ5XkiXh4eHj/iZeXuTNSHg8eHh7e+3lJM6IthfOk0pbRR3oteHh4eDGvHYD9hc8H53t4eHh4i6l6kiQ2x3FbTNfR4uHh4R3gJWOnTSLJx2b3d2ifGIWCh4eHN+LlR39yu1ny2LzcX56Oh4eHd4y3CSLHbFZOZ7/Ew8PDO8HLFwjypav7g74ddOWvZrUfgYeHhxfz2sTQLg20pfB9Gmh/g4eHh3eO1zYR2nWoNgHMutF4eHh47+S1rdsklBx5/5TV2AwPDw/vAK8NtB2DJeXvbM0rfzoeHh7es7x8gNQG9+w922UvPDw8vM/ykvJ604SdFfT10hUeHh7eo7x967Yd8M/K9HYkhoeHh3eONxvtt43ddpmgHbNFeQ8PDw9vzdsP9V/BtW/7bhYU8PDw8J7l5aVtzsgTSd7gGLZ98fDw8A7z9q3bvKHQNi9WO2V4eHh4j/JmRW0eaNuAaOPptwnw8PDwtrzkIG6Dm43E2uWDKCHh4eHhHeDl5+r++F6FMmqR4OHh4Z3gtSlhkwxmpfaqkYGHh4f3Fl5b/m7aGe3d6lUtPDw8vAO85KezNsHphkXd5MXDw8N7iDdbq0peR/6vTRvil0jw8PDwDvA26wV5UZs/Pl9HaMd1eHh4eM/ykmTwVEti0/6YLRPg4eHhneO1rYTZikCeSNpmxGVUeHh4eB/l5a2E/IjfVP1RWxkPDw/vz/Dax+dPTBoQxYvDw8PDO8bLmxGbkjdvYbQJ4zJp4eHh4R3gbQZg+9F+256Ylfh4eHh4D/G+AZXCnHGJraxyAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
