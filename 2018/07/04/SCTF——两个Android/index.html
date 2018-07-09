@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>SCTF——两个Android | W4ter5heep&#39;s site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CTF,Android">
+    <meta name="description" content="SCTF——两个Androidsimple切入点为ProxyApplication                                                                                             -w824              可以看到该app对test.zip进行了处理，应该是需要动态加载相关的类文件，DexClass">
+<meta name="keywords" content="CTF,Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SCTF——两个Android">
+<meta property="og:url" content="http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/index.html">
+<meta property="og:site_name" content="W4ter5heep&#39;s site">
+<meta property="og:description" content="SCTF——两个Androidsimple切入点为ProxyApplication                                                                                             -w824              可以看到该app对test.zip进行了处理，应该是需要动态加载相关的类文件，DexClass">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306737776257.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306752678735.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306755456371.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306754069153.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306755456371.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306755936722.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306805603162.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306812435787.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306812644359.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15306810823111.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15308846316340.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15308847036536.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15308847256766.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310290722071.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310297536556.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310437215701.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310466801582.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310470527452.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310599295238.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310601405784.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310614116374.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310681583581.jpg">
+<meta property="og:image" content="http://www.w4ter5heep.com/images/15310677695092.jpg">
+<meta property="og:updated_time" content="2018-07-09T05:05:35.349Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SCTF——两个Android">
+<meta name="twitter:description" content="SCTF——两个Androidsimple切入点为ProxyApplication                                                                                             -w824              可以看到该app对test.zip进行了处理，应该是需要动态加载相关的类文件，DexClass">
+<meta name="twitter:image" content="http://www.w4ter5heep.com/images/15306737776257.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="W4ter5heep&#39;s site" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/gogo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">W4ter5heep</h5>
+          <a href="mailto:w4ter5heep@qq.com" title="w4ter5heep@qq.com" class="mail">w4ter5heep@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/w4ter5heep" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friendlinks"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                友链
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SCTF——两个Android</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SCTF——两个Android</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-04T02:39:06.530Z" itemprop="datePublished" class="page-time">
+  2018-07-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/WriteUp/">WriteUp</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SCTF——两个Android"><span class="post-toc-number">1.</span> <span class="post-toc-text">SCTF——两个Android</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#simple"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">simple</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#crackme2"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">crackme2</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-SCTF——两个Android"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SCTF——两个Android</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-04 10:39:06" datetime="2018-07-04T02:39:06.530Z"  itemprop="datePublished">2018-07-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/WriteUp/">WriteUp</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="SCTF——两个Android"><a href="#SCTF——两个Android" class="headerlink" title="SCTF——两个Android"></a>SCTF——两个Android</h1><h2 id="simple"><a href="#simple" class="headerlink" title="simple"></a>simple</h2><p>切入点为ProxyApplication<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306737776257.jpg" alt="-w824" title="">
+                </div>
+                <div class="image-caption">-w824</div>
+            </figure></p>
+<p>可以看到该app对test.zip进行了处理，应该是需要动态加载相关的类文件，DexClassLoader即动态加载dex文件。</p>
+<p>注意FindAssetfile的getAssetsFile函数<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306752678735.jpg" alt="-w252" title="">
+                </div>
+                <div class="image-caption">-w252</div>
+            </figure><br>v1会存储zip文件的内容，如果decMethod为null，则：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306755456371.jpg" alt="-w319" title="">
+                </div>
+                <div class="image-caption">-w319</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306754069153.jpg" alt="-w481" title="">
+                </div>
+                <div class="image-caption">-w481</div>
+            </figure><br>v3_1存储zip包的内容，然后v3_1前四字节会修改，然后交由crypt处理<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306755456371.jpg" alt="-w319" title="">
+                </div>
+                <div class="image-caption">-w319</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306755936722.jpg" alt="-w400" title="">
+                </div>
+                <div class="image-caption">-w400</div>
+            </figure><br>会生成256长度的数组，然后，打乱顺序<br>对于数据的解密则是经过一系列变换从256数组中拿出一个数字与之异或，实现解密</p>
+<p>想到两种获得解密后文件的方法：</p>
+<ol>
+<li>复现解密过程，可以直接抠apk的java代码或者用python写一遍解密过程</li>
+<li>apk运行以后手机中提取解密后的load.dex<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306805603162.jpg" alt="-w574" title="">
+                </div>
+                <div class="image-caption">-w574</div>
+            </figure>
+会发现两个app_shell中都有load.dex<br>两个dex是不一样大的：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306812435787.jpg" alt="-w637" title="">
+                </div>
+                <div class="image-caption">-w637</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306812644359.jpg" alt="-w673" title="">
+                </div>
+                <div class="image-caption">-w673</div>
+            </figure>
+<strong>简单分析一下</strong>：<br>app_shell中的load.dex，已经解析出了mainactivity<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15306810823111.jpg" alt="-w633" title="">
+                </div>
+                <div class="image-caption">-w633</div>
+            </figure>
+再查看一下另一个dex，无法解析，并不是正常的dex文件</li>
+</ol>
+<p>分析解密得到的dex文件<br>长度：24<br>input[0]:&gt;48(0,0x30) input[7]&lt;112(p,0x70)</p>
+<p>mainactivity -&gt; Square -&gt; Point<br>还需要分析层层嵌套和初始化，两个类Square，Point都是自定义的，要搞懂其中含义</p>
+<p>每8个为一组，都要通过check()，每组输入ascii是递增的</p>
+<p>进一步分析，将24字节输入转化为三组8字节数据，并且存储成Square数组，对于每字节实际转化为了5*5的矩阵，数据通过(v1[v5 + v2] &lt;&lt; 8) + v12 + 255生成，该数字为32位，从后往前每一位占据1格，每一位的0或1代表是否有颜色。通过检测的条件是对角线都是有颜色的，但是发现条件似乎不可能成立，因为输入的最高位肯定是0，卡住了，不对不对，考虑反了，最低位是0，不影响，中间还存在平移的情况，但是对判断影响不大。<br>要满足的条件：</p>
+<blockquote>
+<p>1 0 0 0 1<br>0 1 0 1 0<br>0 0 1 0 0<br>0 1 0 1 0<br>1 0 0 0 1<br>基本分析到了这里，应该需要暴力破解<br>进一步分析，可能处在对角线上的位数只可能是第4、8位或第4、5位，先遍历找到所有第4、8位是1的（这里的分析粗心大意了，不完整）</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">poss1 = <span class="string">""</span></span><br><span class="line">poss2 = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0x20</span>, <span class="number">0x70</span>):</span><br><span class="line">	<span class="keyword">if</span> (i &amp; <span class="number">0x1</span>) <span class="keyword">and</span> (i &amp; <span class="number">0x10</span>):</span><br><span class="line">		poss1 += chr(i)</span><br><span class="line">	<span class="keyword">if</span> (i &amp; <span class="number">0x8</span>) <span class="keyword">and</span> (i &amp; <span class="number">0x10</span> ):</span><br><span class="line">		poss2 += chr(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> poss1</span><br><span class="line"><span class="keyword">print</span> poss2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输出<br>13579;=?QSUWY[]_<br>89:;&lt;=&gt;?XYZ[]^_</p>
+</blockquote>
+<p>得到可用输出之后，继续分析条件<br>我的考虑还是不足的，应该首先构造符合check()的输入，然后经过turnpoint也要是check()成功的，turnpoint有三种可能轮数：4，8，12，也就是三组Square在经过各自的turnpoint之后也要满足check()，两个check()条件之前的分析应该是出错了</p>
+<p>第一组：<br>turnpoint前后观察对角线可以发现，input的4，6，8位必须是1，才能满足两次check()<br>第二组：<br>同理，input的2，4，8位必须是1<br>第三组：<br>input的4，5，8位必须是1<br>同时发现，八位数已经确定了四位，函数还需要满足递增条件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">out1 = <span class="string">""</span></span><br><span class="line">out2 = <span class="string">""</span></span><br><span class="line">out3 = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0x30</span>,<span class="number">0x70</span>):</span><br><span class="line">	<span class="keyword">if</span> (i &amp; <span class="number">0b00010101</span>) == <span class="number">0b00010101</span>:</span><br><span class="line">		out1 += chr(i)</span><br><span class="line"><span class="keyword">print</span> out1</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0x20</span>,<span class="number">0x70</span>):</span><br><span class="line">	<span class="keyword">if</span> (i &amp; <span class="number">0b01010001</span>) == <span class="number">0b01010001</span>:</span><br><span class="line">		out2 += chr(i)</span><br><span class="line"><span class="keyword">print</span> out2</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0x20</span>,<span class="number">0x70</span>):</span><br><span class="line">	<span class="keyword">if</span> (i &amp; <span class="number">0b00011001</span>) == <span class="number">0b00011001</span>:</span><br><span class="line">		out3 += chr(i)</span><br><span class="line"><span class="keyword">print</span> out3</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"SCTF&#123;"</span> + out1 + out2 + out3 + <span class="string">"&#125;"</span></span><br></pre></td></tr></table></figure>
+<p><strong>SCTF{57=?UW]_QSUWY[]<em>9;=?Y[]</em>}</strong><br>算是做出来了，还有一点小问题是为什么第2，3组范围也限制为0x70以下，第一组是因为有明确的条件，但是后面应该可以在0x70～0x7F之间，然后就会多出几个可能解，暂时没有解释。</p>
+<p>官方wp：输入的字符要满足生成的4二进制矩阵对角线为1，并且每组的ascii是递增的，<br>在0x20～0x70之间<br>解决方法是找到，Square处的代码，遍历输入，找到满足条件的所有输入，筛选出符号输入要求的字符即可？？？？？？？？？太笼统了。。。<br>还可以通过重写app爆破得到结果</p>
+<h2 id="crackme2"><a href="#crackme2" class="headerlink" title="crackme2"></a>crackme2</h2><p>首先JEB分析，发现Java代码非常简单：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15308846316340.jpg" alt="-w654" title="">
+                </div>
+                <div class="image-caption">-w654</div>
+            </figure><br>主要的处理函数是Native的tryit函数满足返回值是15即可<br>ida查看so文件，找到Jni_OnLoad函数<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15308847036536.jpg" alt="-w746" title="">
+                </div>
+                <div class="image-caption">-w746</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15308847256766.jpg" alt="-w739" title="">
+                </div>
+                <div class="image-caption">-w739</div>
+            </figure></p>
+<p>该函数注册对应的地址并没有找到，看wp，函数可能是动态解密的，在init中。<br>官方wp设计思路：在文件的自定义节区加密以及利用ptrace实现父子进程间的数据传递和调试检查。自定义节区在init中还原，简单异或，readtrace包含父子进程的代码，父进程通过跟踪子进程，获取到陷入指令的指令码，检查是否是BKPT(？？？)然后获取子进程寄存器的值，该寄存器存放比较结果，作为验证条件。<br>该题目的难度主要是发现代码段的动态解密以及理解父子进程之间通信过程。<br>查看函数列表中的函数，代码修改的地方是sub_3124，可以看到对mprotect的调用<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310290722071.jpg" alt="-w709" title="">
+                </div>
+                <div class="image-caption">-w709</div>
+            </figure><br>还可以发现sub_33f0中存储的一些关键字符串：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310297536556.jpg" alt="-w356" title="">
+                </div>
+                <div class="image-caption">-w356</div>
+            </figure><br>可以通过这些字符猜测输入：<code>We1co3t0lmel2eV</code> -&gt; <code>We1com3t0leVel2</code>（神人也）</p>
+<p>动态运行后，dump内存获取解密后的lib，进一步分析程序用fork启动了另一个进程做验证<br>尝试：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310437215701.jpg" alt="-w403" title="">
+                </div>
+                <div class="image-caption">-w403</div>
+            </figure><br>发现无法进一步调试<br>计算基地址似乎也不正确<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310466801582.jpg" alt="-w978" title="">
+                </div>
+                <div class="image-caption">-w978</div>
+            </figure><br>查看maps，找到了so文件的地址，但是dump下来ida无法解析<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310470527452.jpg" alt="-w774" title="">
+                </div>
+                <div class="image-caption">-w774</div>
+            </figure><br>基地址即是0xb3c1f000<br>此处应该就是so文件的开头，查看b3c32000，看有什么不同，发现该部分数据为0，而且此后的数据也与静态时不同。<br>调试发现会因为SIGLL信号暂停，官方wp提示IDA调试注意忽略略异常。ARM的断点好像是用非法指令实现，所以会有SIGILL信号，还有ptrace带来的子进程暂停得到的SIGCHILD信号。<br>fork进程用断点通信，子进程sub_3E74解密，父进程sub_3940比较。链表保存了字符串<code>We1co3t0lmel2eV</code>，</p>
+<p>ida动态调试，一直没有绕过那几个信号异常，忽略也没用，实际上处理的函数静态就能看到，没有动态解密，但是，还是不会分析如何找到的，以及如何发现与子进程的通信过程的。<br>sub_3e74(子进程解密函数):<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310599295238.jpg" alt="-w1027" title="">
+                </div>
+                <div class="image-caption">-w1027</div>
+            </figure></p>
+<p>sub_3940(主进程检查函数)：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310601405784.jpg" alt="-w968" title="">
+                </div>
+                <div class="image-caption">-w968</div>
+            </figure><br>还是找不到tryit是怎么注册的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310614116374.jpg" alt="-w1030" title="">
+                </div>
+                <div class="image-caption">-w1030</div>
+            </figure>
+<p>dword_15010处：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310681583581.jpg" alt="-w719" title="">
+                </div>
+                <div class="image-caption">-w719</div>
+            </figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/15310677695092.jpg" alt="-w625" title="">
+                </div>
+                <div class="image-caption">-w625</div>
+            </figure>
+<p>简单分析解密函数的逻辑：<br>str1 = “We1co3t0lmel2eV”<br>arry1 = [0xEF, 0x145, 0x93, 0x134, 0x132]<br>i=0:<br>for j=0 j&lt;5 j++<br>    v2 = arry1[j%5] - (str1[(j+1)%5+5] + str1[5*2 + (j+2)%5])</p>
+<p>i=1:<br>for j=0 j&lt;5 j++<br>    v2 = arry1[j%5] - (str1[j%5] + str1[5*2 + (j+2)%5]</p>
+<p>i=2:<br>for j=0 j&lt;5 j++<br>    v2 = arry1[j%5] - (str1[(j+1)%5+5] + str1[j%5])</p>
+<p>逻辑上基本是这样的，v2即链表中保存的字符串（We1co3t0lmel2eV），v6可以看作输入，也可以认为输入的15个字符每五个分为一组进行变换，要求满足处理之后与预存字符串相同。<br>不理解如何发现v2以及v6含义的，应该是通过动态调试观察相应的值。<br>正向解法是使用z3直接破解。<br>几个版本的py脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from z3 import *</span><br><span class="line">d = &quot;We1co3t0lmel2eV&quot;</span><br><span class="line">t = [0xEF, 0x145, 0x93, 0x134, 0x132]</span><br><span class="line">s = Solver()</span><br><span class="line">a = [Int(&quot;a%d&quot;%i) for i in range(15)]</span><br><span class="line"># print(a)</span><br><span class="line">x = [1,1,1]</span><br><span class="line"></span><br><span class="line">for j in range(3):</span><br><span class="line">    x[j] = 0</span><br><span class="line">    # print(x)</span><br><span class="line">    for i in range(5):</span><br><span class="line">        s.add(ord(d[j*5+i]) == t[i%5] - (a[((i+1)%5+5)]*x[1] + a[i%5]*x[0] + a[5*(x[0]+x[1]+x[2]) + (i+2)%5] * x[2]))</span><br><span class="line">    x[j] = 1</span><br><span class="line">c = s.check()</span><br><span class="line">print(c)</span><br><span class="line">if(c==sat):</span><br><span class="line">    m = s.model()</span><br><span class="line">    # print(m)</span><br><span class="line">    for i in a:</span><br><span class="line">        print(chr(m[i].as_long()))</span><br></pre></td></tr></table></figure>
+<p>自己模仿的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from z3 import *</span><br><span class="line"></span><br><span class="line">str1 = &apos;We1co3t0lmel2eV&apos;</span><br><span class="line">arry1 = [0xEF, 0x145, 0x93, 0x134, 0x132]</span><br><span class="line">s = Solver()</span><br><span class="line">a = [Int(&apos;a%d&apos;%i) for i in range(15)]</span><br><span class="line"></span><br><span class="line">t = [1,1,1]</span><br><span class="line"></span><br><span class="line">for i in range(3):</span><br><span class="line">	t[i] = 0</span><br><span class="line">	for j in range(5):</span><br><span class="line">		s.add(ord(str1[i*5+j]) == arry1[j] - (a[5+(j+1)%5]*t[1] + a[j%5]*t[0] + a[5*(t[0]+t[1]+t[2])+(j+2)%5]*t[2]))</span><br><span class="line">	t[i] = 1</span><br><span class="line"></span><br><span class="line">print s.check()</span><br><span class="line">print s.model()</span><br><span class="line">m = s.model()</span><br><span class="line">flag = &quot;&quot;</span><br><span class="line">for i in m:</span><br><span class="line">	flag += chr(m[i].as_long())</span><br><span class="line">print flag</span><br></pre></td></tr></table></figure>
+<p>至此，两个题就告一段落了，还是太菜了，特别是对第二个题，不会动态调试也不会分析程序逻辑也不会猜也不会z3，简直什么都不会了。</p>
+<ul>
+<li>so文件格式分析，运行分析，注册函数过程分析</li>
+<li>反调试如何优雅地绕过</li>
+<li>。。。太菜了</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-09T05:05:35.349Z" itemprop="dateUpdated">2018-07-09 13:05:35</time>
+</span><br>
+
+
+        
+        感谢阅读
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.w4ter5heep.com">
+            <img src="/img/gogo.jpg" alt="W4ter5heep">
+            W4ter5heep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/&title=《SCTF——两个Android》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/&title=《SCTF——两个Android》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SCTF——两个Android》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/03/看雪CTF——ExecuteTable/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">看雪CTF——ExecuteTable</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>W4ter5heep &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/&title=《SCTF——两个Android》 — W4ter5heep's site&pic=http://www.w4ter5heep.com/img/gogo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/&title=《SCTF——两个Android》 — W4ter5heep's site&source=Coding is fun!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SCTF——两个Android》 — W4ter5heep's site&url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/&via=http://www.w4ter5heep.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.w4ter5heep.com/2018/07/04/SCTF——两个Android/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aS26EQAxFUfa/6cq0pQh0n11pBdetUSuCwGFg+Xdd+KyP8/vv/PrOXRuODBkyXstYj4dfs/dZ8XNlyJBxAOM5LKa/7wLowoe/mwwZMmQ8B8G7l6uFcvJpZMiQIYMwSFnLi1hOkiFDhoxaYUkSQR5Gv1SLy5Ah44UM3ib7/u8/mW/IkCHjVYwVnv6Ys9OAu30rGTJkjGbwAJcmjqTsJA274JPJkCHjGAZv3KfrESTpbK2jyZAh4wBGrcWWhkUySCi+jwwZMg5jpE38WvDlyFbTTYYMGSMY6ZCycz1fziiOEGTIkDGOQQIcx3TCaI139R8gQ4aMf8+orV7Vksg04UuDvgwZMmYzdqVovJXWHw/c/jcZMmSMY5AlrV1Twn7rDY0EZMiQMZqxa82iP/KMU0kZMmSMZqRtMtL0r8HSth3KcGXIkDGCkaZ0PFDWYLWWnwwZMk5gdFYlajta/NOgMluGDBmjGbXQ2UkB06Z/cVwqQ4aMcYy0Kd9ZnuBBM14vkyFDxgEMsnrFW2zpWJTjZciQcTKjNhjg7bkFTmfMKUOGjKmMFZ5d9/YHojJkyDiHkbb4ecFJwGk62B9UyJAh472MXa3/9N50SIlmGjJkyBjNSFtdaUDsLF4EtbgMGTJkgIWMdNiQXrMt4MqQIWM0I331fuOMDEplyJBxAoMXliTWdcYMPGTLkCHjHEYt7yIlaDpISMcPMmTIOIDxA/NQ+gjz03fyAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你看不到我了哦！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '哇，你回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
